@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 配置 MyBatis 运行环境 -->
+    <environments default="development">
+        <!-- 环境变量：支持多套环境变量，例如开发环境、生产环境 -->
+        <environment id="development">
+            <!-- 事务管理器：默认JDBC -->
+            <transactionManager type="JDBC" />
+            <!-- 数据源：使用连接池，并加载mysql驱动连接数据库 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver" />
+                <property name="url" value="jdbc:mysql://localhost:3306/ntest?useUnicode=true&amp;characterEncoding=UTF-8" />
+                <property name="username" value="root" />
+                <property name="password" value="120708" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- Mapper注册 -->
+    <mappers>
+        <mapper resource="com/wzw/mapper/PeopleMapper.xml" />
+        <mapper resource="com/wzw/repository/PeopleRepository.xml" />
+        <mapper resource="com/wzw/repository/StudentRepository.xml" />
+        <mapper resource="com/wzw/repository/ClassesRepository.xml" />
+        <mapper resource="com/wzw/repository/AccountRepository.xml" />
+        <mapper resource="com/wzw/repository/CourseRepository.xml" />
+<!--        <mapper class="com.wzw.mapper.PeopleMapper" />-->
+    </mappers>
+</configuration>

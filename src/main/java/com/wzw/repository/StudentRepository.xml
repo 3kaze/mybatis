@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzw.repository.StudentRepository">
+
+    <resultMap id="studentMap" type="com.wzw.entity.Student">
+        <!-- 主键 -->
+        <id column="sid" property="id"/>
+        <result column="sname" property="name"/>
+
+        <!-- 结果集封装成一个实体类对象(一个目标对象) -->
+        <association property="classes" javaType="com.wzw.entity.Classes">
+            <id property="id" column="cid"/>
+            <result property="name" column="cname"/>
+        </association>
+    </resultMap>
+
+    <select id="findById" parameterType="java.lang.Integer" resultMap="studentMap">
+        SELECT s.id sid, s.name sname, c.id cid, c.name cname
+        FROM t_student s,
+             t_classes c
+        WHERE s.cid = c.id
+          AND s.id = #{id}
+    </select>
+
+</mapper>

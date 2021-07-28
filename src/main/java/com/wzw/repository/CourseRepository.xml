@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzw.repository.CourseRepository">
+
+    <resultMap id="courseMap" type="com.wzw.entity.Course">
+        <id column="cid" property="id" />
+        <result column="cname" property="name" />
+        <collection property="accounts" ofType="com.wzw.entity.Account">
+            <id column="aid" property="id" />
+            <result column="aname" property="name" />
+        </collection>
+    </resultMap>
+
+    <select id="findById" parameterType="java.lang.Integer" resultMap="courseMap">
+        SELECT a.id aid, a.name aname, c.id cid, c.name cname
+        FROM t_account a,
+             t_course c,
+             account_course ac
+        WHERE c.id = #{id}
+          AND a.id = ac.aid
+          AND c.id = ac.cid
+    </select>
+</mapper>
