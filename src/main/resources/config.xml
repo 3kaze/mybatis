@@ -2,6 +2,14 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+    <settings>
+        <!-- 打印SQL -->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!-- 延迟加载 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+    </settings>
+
     <!-- 配置 MyBatis 运行环境 -->
     <environments default="development">
         <!-- 环境变量：支持多套环境变量，例如开发环境、生产环境 -->
@@ -26,6 +34,8 @@
         <mapper resource="com/wzw/repository/ClassesRepository.xml" />
         <mapper resource="com/wzw/repository/AccountRepository.xml" />
         <mapper resource="com/wzw/repository/CourseRepository.xml" />
+        <mapper resource="com/wzw/repository/OrderRepository.xml" />
+        <mapper resource="com/wzw/repository/CustomerRepository.xml" />
 <!--        <mapper class="com.wzw.mapper.PeopleMapper" />-->
     </mappers>
 </configuration>
