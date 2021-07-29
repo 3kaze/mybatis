@@ -8,4 +8,6 @@ import com.wzw.entity.MyClass;
  */
 public interface MyClassRepository {
     public MyClass findById(Integer id);
+    public MyClass findByClass(MyClass myClass);
+    public int update(MyClass myClass);
 }

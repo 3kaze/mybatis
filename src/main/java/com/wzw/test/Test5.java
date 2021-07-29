@@ -31,6 +31,16 @@ public class Test5 {
         myClassRepository = sqlSession.getMapper(MyClassRepository.class);
         MyClass myClass2 = myClassRepository.findById(10);
         System.out.println(myClass2.getName());
+
+        MyClass myclass = new MyClass();
+        myclass.setId(10);
+        myclass.setName("张三");
+        MyClass myClass3 = myClassRepository.findByClass(myclass);
+        System.out.println(myClass3);
+
+        myClass3.setName("李四");
+        myClassRepository.update(myClass3);
+        sqlSession.commit();
         sqlSession.close();
     }
 }

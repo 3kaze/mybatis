@@ -14,6 +14,35 @@
         <property name="memoryStoreEvictionPolicy" value="LRU"/>
     </cache>
     <select id="findById" parameterType="java.lang.Integer" resultType="com.wzw.entity.MyClass">
-        select * from customer where id = #{id}
+        select *
+        from customer
+        where
+        <if test="id!=null">
+            id = #{id}
+        </if>
     </select>
+    <select id="findByClass" parameterType="com.wzw.entity.MyClass" resultType="com.wzw.entity.MyClass">
+        select *
+        from customer
+        <where>
+            <choose>
+                <when test="id!=null">
+                    id = #{id}
+                </when>
+            </choose>
+            <if test="name!=null">
+                and name = #{name}
+            </if>
+        </where>
+    </select>
+
+    <update id="update" parameterType="com.wzw.entity.MyClass">
+        update customer
+        <set>
+            <if test="name!=null">
+                name = #{name}
+            </if>
+            where id = #{id}
+        </set>
+    </update>
 </mapper>
