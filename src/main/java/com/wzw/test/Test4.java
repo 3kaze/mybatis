@@ -14,7 +14,7 @@ import java.io.InputStream;
  */
 public class Test4 {
     public static void main(String[] args) {
-        InputStream inputStream = Test3.class.getClassLoader().getResourceAsStream("config.xml");
+        InputStream inputStream = Test4.class.getClassLoader().getResourceAsStream("config.xml");
         SqlSessionFactoryBuilder sessionFactoryBuilder = new SqlSessionFactoryBuilder();
         SqlSessionFactory sqlSessionFactory = sessionFactoryBuilder.build(inputStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();

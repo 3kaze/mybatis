@@ -8,6 +8,8 @@
         <setting name="logImpl" value="STDOUT_LOGGING"/>
         <!-- 延迟加载 -->
         <setting name="lazyLoadingEnabled" value="true"/>
+        <!-- 开启二级缓存 -->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 
     <!-- 配置 MyBatis 运行环境 -->
@@ -36,6 +38,7 @@
         <mapper resource="com/wzw/repository/CourseRepository.xml" />
         <mapper resource="com/wzw/repository/OrderRepository.xml" />
         <mapper resource="com/wzw/repository/CustomerRepository.xml" />
+        <mapper resource="com/wzw/repository/MyClassRepository.xml" />
 <!--        <mapper class="com.wzw.mapper.PeopleMapper" />-->
     </mappers>
 </configuration>
